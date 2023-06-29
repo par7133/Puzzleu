@@ -1,0 +1,197 @@
+<?php
+
+/**
+ * Copyright 2021, 2024 5 Mode
+ *
+ * This file is part of Puzzleu.
+ * 
+ * Puzzleu is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * Puzzleu is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.  
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with Puzzleu. If not, see <https://www.gnu.org/licenses/>.
+ *
+ * config.inc
+ * 
+ * Puzzleu configuration settings.
+ *
+ * @author Daniele Bonini <my25mb@aol.com>
+ * @copyrights (c) 2021, 2024, 5 Mode     
+ */
+
+define('DEBUG', false);
+define('ADMIN_VIEW', "1");
+define('PUBLIC_VIEW', "2");
+ 
+define('APP_NAME', "Puzzleu");
+define('APP_TITLE', "Puzzleu: everyone its puzzle.");
+
+// password: your_password
+//define('APP_BLOG_HASH', "");
+
+// password: your_password
+// salt: your_salt
+define('APP_HASH', "");
+define('APP_SALT', "yoursalt");
+
+define('APP_HOST', "YourPuzzleu.com");
+define('APP_PATH', "/var/www/YourWebApp/Public");
+define('APP_HOME_PATH', "");
+define('APP_PRIVATE_PATH', "/var/www/YourWebApp/Private");
+define('APP_SCRIPT_PATH', "/var/www/YourWebApp/Private/scripts");
+define('APP_AJAX_PATH', "/var/www/YourWebApp/Private/scripts_ajax");
+define('APP_ERROR_PATH', "/var/www/YourWebApp/Private/error");
+define('APP_DATA_PATH', "/var/www/YourWebApp/Private/data");
+define('APP_LICENSE', <<<LICENSETEXT
+Copyright (c) 2016, 2024, 5 Mode
+All rights reserved.
+
+This file is part of Puzzleu.
+
+Puzzleu is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Puzzleu is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.  
+
+You should have received a copy of the GNU General Public License
+along with Puzzleu. If not, see <https://www.gnu.org/licenses/>.
+
+https://opensource.org/licenses/GPL-3.0
+LICENSETEXT
+);
+// Default Locale, in two letters format
+define('APP_DEF_LANG', "en-US");
+define('APP_DEF_PROFILE_PIC', "/res/pic1.png");
+define('APP_FILE_MAX_SIZE', 10496000);
+define('APP_BLOG_MAX_POSTS', 15);
+define('APP_PAGINATION', false);
+define('APP_EMAIL_CONTACT', "info@yourpuzzleu.com");
+
+$CONFIG = [
+
+   'DEBUG' => true,
+   'ADMIN_VIEW' => "1",
+   'PUBLIC_VIEW' => "2",
+ 
+   'APP' => [
+      'NAME' => "Puzzleu",
+      'TITLE' => "Puzzleu: everyone its puzzle.",
+      // password: your_password
+      // salt: your_salt
+      'HASH' => "",
+      'SALT' => "yoursalt",        
+      'HOST' => "YourPuzzleu.com", 
+      'PATH' => "/var/www/YourWebApp/Public",
+      'HOME_PATH' => "",
+      'PRIVATE_PATH' => "/var/www/YourWebApp/Private", 
+      'SCRIPT_PATH' => "/var/www/YourWebApp/Private/scripts",
+      'AJAX_PATH' => "/var/www/YourWebApp/Private/scripts_ajax",
+      'ERROR_PATH' => "/var/www/YourWebApp/Private/error",
+      'DATA_PATH' => "/var/www/YourWebApp/Private/data",
+      'LICENSE' => <<<LICENSETEXT
+Copyright (c) 2016, 2024, 5 Mode
+All rights reserved.
+
+This file is part of Puzzleu.
+
+Puzzleu is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Puzzleu is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.  
+
+You should have received a copy of the GNU General Public License
+along with Puzzleu. If not, see <https://www.gnu.org/licenses/>.
+
+https://opensource.org/licenses/GPL-3.0 
+LICENSETEXT
+             ,
+      'DEF_LANG' => "en-US",
+      'DEF_PROFILE_PIC' => "/res/pic1.png", 
+      'FILE_MAX_SIZE' => 10496000,
+      'BLOG_MAX_POSTS' => 15,
+      'PAGINATION' => false,
+      'EMAIL_CONTACT' => "info@yourpuzzleu.com"
+      ]
+    
+    ];  
+
+
+$LOCALE = [
+
+  'it-IT' => [
+    
+    '/home.php' => [        
+      'ping' => "pong",
+      'How-to: Manage your avatars in Puzzleu' => "How-to: Gestire i tuoi avatar in Puzzleu",  
+      'CV' => "CV",  
+      'Sample' => "Esempio",   
+      'My Network' => "Network",
+      'Hello from 5 Mode' => "Ciao da 5 Mode",  
+      'This is just an example of blog entry' => "Questo e' giusto un esempio di post nel blog",  
+      'Go' => "Vai",  
+      'Hash Me' => "Codificami",  
+      'Some rights reserved' => "Alcuni diritti riservati"  
+         ],
+     
+    '/js/home-js.php' => [
+      'ping' => "pong",
+      'Please set your hash in the config file with this value' => "Puoi impostare il tuo hash nel file config con questo valore"   
+         ]  
+      
+      ],
+
+  'zh-CN' => [
+    
+    '/home.php' => [        
+      'ping' => "pong",
+      'How-to: Manage your avatars in Puzzleu' => "HOW-TO: 免费管理您的化身",    
+      'CV' => "简历",  
+      'Sample' => "样本",  
+      'My Network' => "我的网络",  
+      'Hello from 5 Mode' => "您好5 MODE",  
+      'This is just an example of blog entry' => "这只是博客条目的一个例子",    
+      'Go' => "去",  
+      'Hash Me' => "哈希我",  
+      'Some rights reserved' => "保留一些权利"  
+         ],
+     
+    '/js/home-js.php' => [
+      'ping' => "pong",
+      'Please set your hash in the config file with this value' => "请在配置文件中设置您的哈希"     
+         ]  
+      
+      ]
+    
+  ];
+
+$EMOTICONS = [
+    '[:-)]' => "&#128578;",
+    '[:-p]' => "&#129297;",
+    '[:c)]' => "&#128512;",
+    '[;-)]' => "&#128521;",
+    '[:-J]' => "&#128527;",
+    '[;-P]' => "&#128540;",
+    '[:-/]' => "&#128533;",
+    '[@-)]' => "&#128531;",
+    '[B-)]' => "&#128526;",
+    '[=]]' => '&#128515;',
+    '[=)]' => "&#128516;",
+    '[*-)]' => "&#128525;"
+ ];
