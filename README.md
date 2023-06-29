@@ -8,7 +8,7 @@
 
 Hello and welcome to Puzzleu!<br>
 	  
-Puzzleu is a light, simple, software on premise to build and own your photo gallery (or puzzle!).<br>
+Puzzleu is a light, simple, software on premise to build and own your photo gallery.<br>
 	   
 Puzzleu is released under GPLv3 license, it is supplied AS-IS and we do not take any responsibility for its misusage.<br>
 	   
