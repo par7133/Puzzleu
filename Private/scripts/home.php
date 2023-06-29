@@ -452,65 +452,20 @@
       <br><br>
    </div> -->
    <div class="header" style="margin-top:18px;margin-bottom:18px;">
-        <a href="http://p.uzzl.eu" target="_self" style="color:#000000; text-decoration: none;">&nbsp;<img src="/res/AFlogo.png" align="middle" style="position:relative;top:-5px;width:22px;">&nbsp;Puzzleu</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/par7133/Puzzleu" style="color:#000000;"><span style="color:#119fe2">on</span> github</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="mailto:posta@elettronica.lol" style="color:#000000;"><span style="color:#119fe2">for</span> feedback</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="tel:+39-331-4029415" style="font-size:13px;background-color:#15c60b;border:2px solid #15c60b;color:#000000;height:27px;text-decoration:none;">&nbsp;&nbsp;get support&nbsp;&nbsp;</a>
+        <div style="float:left">
+             <a href="http://p.uzzl.eu" target="_self" style="color:#000000; text-decoration: none;">&nbsp;<img src="/res/AFlogo.png" align="middle" style="position:relative;top:-5px;width:22px;">&nbsp;Puzzleu</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/par7133/Puzzleu" style="color:#000000;"><span style="color:#119fe2">on</span> github</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="mailto:my25mb@aol.com" style="color:#000000;"><span style="color:#119fe2">for</span> feedback</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="tel:+39-331-4029415" style="font-size:13px;background-color:#15c60b;border:2px solid #15c60b;color:#000000;height:27px;text-decoration:none;">&nbsp;&nbsp;get support&nbsp;&nbsp;</a>
+        </div>
+        <div style="float:right; position:relative; top:-10px;margin-right:300px;">
+              <a href="#" onclick="slideShow();"><img src="/res/playicon.png" style="width:45px;"></a>
+        </div>     
    </div>
     
    <form id="frmUpload" role="form" method="post" action="/<?PHP echo(AVATAR_NAME);?>?hl=<?PHP echo($lang);?>" target="_self" enctype="multipart/form-data">  
-   
-   <!--
-   <div id="title"> 
-        <div id="avatarLogo">
-            <img id="picavatar" src="/img?av=<?PHP echo(AVATAR_NAME);?>&pic=<?PHP echo($profilePic);?>" align="middle" style="position:relative;display:inline;">
-        </div>  
-        <div id="avatarName">
-          &nbsp;<?PHP echo(strtoupper(AVATAR_NAME));?>&nbsp;&nbsp;&nbsp;
-        </div>  
-        <div id="cudoz">
-        <?PHP for ($i=1;$i<=$CUDOZ;$i++): ?>
-             <img id="cudozentry<?PHP echo($i);?>" class="cudoz-entry" src="/res/chicca_<?PHP echo($shortLang);?>.png">    
-        <?PHP endfor; ?>
-        <?PHP for ($i=$CUDOZ+1;$i<=5;$i++): ?>
-             <img id="cudozentry<?PHP echo($i);?>" class="cudoz-entry" src="/res/chiccadis.png">    
-        <?PHP endfor; ?>               
-         </div> 
-
-        <div id="cvs">  
-          
-                   <div style="float:left;width:47px;margin-top:20px;margin-left:7px;"><?PHP echo(getResource0("CV", $lang));?></div>
-          
-       <?PHP
-       $pattern = $CV_PATH . DIRECTORY_SEPARATOR . "*";
-       $aFilePaths = glob($pattern);
-       if (empty($aFilePaths)): ?>
-         <img class="cv-entry" src="/res/wordicondis.png">&nbsp;&nbsp;<img class="cv-entry" src="/res/pdficondis.png">
-       <?PHP else: ?>
-         <?PHP
-         $CUDOZ++;
-         $pattern = $CV_PATH . DIRECTORY_SEPARATOR . "*.doc";
-         $aFilePaths = glob($pattern);
-         if (empty($aFilePaths)): ?>
-          <img class="cv-entry" src="/res/wordicondis.png">&nbsp;&nbsp;
-         <?PHP else: ?>
-          <a href="/doc?av=<?PHP echo(AVATAR_NAME);?>&re=cv&doc=<?PHP echo(basename($aFilePaths[0]));?>"><img class="cv-entry" src="/res/wordicon.png"></a>&nbsp;&nbsp;
-         <?PHP endif; ?>
-        <?PHP
-         $pattern = $CV_PATH . DIRECTORY_SEPARATOR . "*.pdf";
-         $aFilePaths = glob($pattern);
-         if (empty($aFilePaths)): ?>
-          <img class="cv-entry" src="/res/pdficondis.png">
-         <?PHP else: ?>
-          <a href="/doc?av=<?PHP echo(AVATAR_NAME);?>&re=cv&doc=<?PHP echo(basename($aFilePaths[0]));?>"><img class="cv-entry" src="/res/pdficon.png"></a>
-         <?PHP endif; ?>
-       <?PHP endif; ?>
-       </div>  
-   </div> 
-   
-  <br>
-  -->   
-    
+      
  <div id="blog">    
       <?PHP
    $iEntry = 2;   
+   $totLinks = 0;
    $aLinks=[];
    $pattern = $BLOG_PATH . DIRECTORY_SEPARATOR . "*";
    $aFilePaths = glob($pattern);   
@@ -552,7 +507,7 @@
       }    
       // ---      
       
-      //echo("blogSP=".$blogSP)
+      //echo("blogSP=".$blogSP);
       foreach ($aFilePaths as $filePath) {
         //echo("iCurEntry=".$iCurEntry);
         if ($iCurEntry<($blogSP+1)) {
@@ -595,6 +550,7 @@
                           <?PHP $aLinks[] = "/img?av=" . AVATAR_NAME . "&pic=" . $orifilename; ?>
                       <?PHP EndIf; ?>
                  <?PHP 
+       $totLinks = $iEntry;          
        $iEntry++;          
        $iCurEntry++;
       }?>
@@ -959,6 +915,7 @@
 <?PHP if ($CURRENT_VIEW == PUBLIC_VIEW): ?> 
 <script>
   function selectVideo(i) {
+    //alert(3);
     y=0;
     $(".image").each(function(){
       if (y==i) {
@@ -1067,6 +1024,29 @@
     setTimeout("setContentPos()", 1000);
   });
 
+</script>  
+
+<script>
+  
+  var iSlide;
+  var ii;
+  
+  function showSlide() {
+    $(".modal").click();
+    selectVideo(iSlide);
+    if (iSlide<<?PHP echo($totLinks);?>) {
+      iSlide++;
+    } else {
+      clearInterval(ii);
+      $(".modal").click();
+      
+    }  
+  }
+  
+  function slideShow() {
+   iSlide = 0;
+   ii = setInterval(showSlide,3700);
+  }    
 </script>  
 
 <!-- SKINNER CODE -->
