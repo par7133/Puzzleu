@@ -367,7 +367,7 @@
   <link rel="shortcut icon" href="/favicon.ico" />
 
   <meta name="description" content="Welcome to Puzzleu! Let everyone have its puzzle."/>
-  <meta name="keywords" content="Puzzleu,photo,puzzle,p.uzzl.eu,on,premise,solution"/>
+  <meta name="keywords" content="Puzzleu,photo,puzzle,on,premise,solution"/>
   <meta name="robots" content="index,follow"/>
   <meta name="author" content="5 Mode"/>
   
@@ -453,7 +453,7 @@
    </div> -->
    <div class="header" style="margin-top:18px;margin-bottom:18px;">
         <div style="float:left">
-             <a href="http://p.uzzl.eu" target="_self" style="color:#000000; text-decoration: none;">&nbsp;<img src="/res/AFlogo.png" align="middle" style="position:relative;top:-5px;width:22px;">&nbsp;Puzzleu</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/par7133/Puzzleu" style="color:#000000;"><span style="color:#119fe2">on</span> github</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="mailto:my25mb@aol.com" style="color:#000000;"><span style="color:#119fe2">for</span> feedback</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="tel:+39-331-4029415" style="font-size:13px;background-color:#15c60b;border:2px solid #15c60b;color:#000000;height:27px;text-decoration:none;">&nbsp;&nbsp;get support&nbsp;&nbsp;</a>
+             <a href="http://puzzleu.5mode-foss.eu" target="_self" style="color:#000000; text-decoration: none;">&nbsp;<img src="/res/AFlogo.png" align="middle" style="position:relative;top:-5px;width:22px;">&nbsp;Puzzleu</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/par7133/Puzzleu" style="color:#000000;"><span style="color:#119fe2">on</span> github</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="mailto:posta@elettronica.lol" style="color:#000000;"><span style="color:#119fe2">for</span> feedback</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="tel:+39-331-4029415" style="font-size:13px;background-color:#15c60b;border:2px solid #15c60b;color:#000000;height:27px;text-decoration:none;">&nbsp;&nbsp;get support&nbsp;&nbsp;</a>
         </div>
         <div style="float:right; position:relative; top:-10px;margin-right:300px;">
               <a href="#" onclick="slideShow();"><img src="/res/playicon.png" style="width:45px;"></a>
