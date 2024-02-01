@@ -102,14 +102,13 @@
    //echo_ifdebug(true, "AVATAR_PATH#1=");
    //echo_ifdebug(true, $AVATAR_PATH);
    
-   //if (!empty($_FILES['files'])) {
-   if (!empty($_FILES['filesdd']['tmp_name'][0])) {
-	   
-     //no file uploaded
-     //$uploads = (array)fixMultipleFileUpload($_FILES['files']);
-     //if ($uploads[0]['error'] === UPLOAD_ERR_NO_FILE) {
+   if (!empty($_FILES['files']['tmp_name'][0]) ||  !empty($_FILES['filesdd']['tmp_name'][0])) {
+      
+     $uploads = (array)fixMultipleFileUpload($_FILES['files']);
+     if ($uploads[0]['error'] === PHP_UPLOAD_ERR_NO_FILE) {
        $uploads = (array)fixMultipleFileUpload($_FILES['filesdd']);
-     //}   
+     }   
+     
      //if ($uploads[0]['error'] === PHP_UPLOAD_ERR_NO_FILE) {
      //  echo("WARNING: No file uploaded.");
      //  return;
@@ -287,6 +286,8 @@
        $i++;
         
      }	 
+   } else {
+     //echo("WARNING: No file uploaded (err-pip-po).");
    }
  }
 
@@ -367,7 +368,7 @@
   <link rel="shortcut icon" href="/favicon.ico" />
 
   <meta name="description" content="Welcome to Puzzleu! Let everyone have its puzzle."/>
-  <meta name="keywords" content="Puzzleu,photo,puzzle,on,premise,solution"/>
+  <meta name="keywords" content="puzzleu,photo,puzzle,on,premise,solution"/>
   <meta name="robots" content="index,follow"/>
   <meta name="author" content="5 Mode"/>
   
@@ -397,8 +398,12 @@
   <form id="frmUpload" role="form" method="post" action="/<?PHP echo(AVATAR_NAME);?>?hl=<?PHP echo($lang);?>" target="_self" enctype="multipart/form-data">  
     
   <div class="dragover" dropzone="copy">  
+  
+   <div id="fireupload" onclick="$('#files').click()">
+       <img id="picavatar" src="/img?av=<?PHP echo(AVATAR_NAME);?>&pic=<?PHP echo($profilePic);?>" align="middle">  
+   </div> 
     
-    <img id="picavatar" src="/img?av=<?PHP echo(AVATAR_NAME);?>&pic=<?PHP echo($profilePic);?>" align="middle">  
+    <input id="files" name="files[]" type="file" accept=".*" style="visibility: hidden;" multiple>    
   
     <input type="hidden" id="a" name="a">    
     <input type="hidden" id="f" name="f">  
@@ -910,7 +915,7 @@
            
  <?PHP endif; ?>           
 
-<script src="/static/js/home-js.php?hl=<?PHP echo($lang);?>&av=<?PHP echo(AVATAR_NAME);?>&cv=<?PHP echo($CURRENT_VIEW);?>&cu=<?PHP echo($CUDOZ);?>" type="text/javascript"></script>
+<script src="/js/home-js.php?hl=<?PHP echo($lang);?>&av=<?PHP echo(AVATAR_NAME);?>&cv=<?PHP echo($CURRENT_VIEW);?>&cu=<?PHP echo($CUDOZ);?>" type="text/javascript"></script>
 
 <?PHP if ($CURRENT_VIEW == PUBLIC_VIEW): ?> 
 <script>
