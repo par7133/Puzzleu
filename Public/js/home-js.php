@@ -25,7 +25,7 @@
  * @copyrights (c) 2016, 2024, 5 Mode     
  */
  
- require "../../../Private/core/init.inc";
+ require "../../Private/core/init.inc";
 
  header("Content-Type: text/javascript");
 
@@ -292,14 +292,21 @@ $("div.dragover").on("drop", function(e) {
   return false;
 });
 
+$("input#files").on("change", function(e) {
+  frmUpload.submit();
+});
+
 function setContentPos() {                    
   h=parseInt(window.innerHeight);
   w=parseInt(window.innerWidth);
 
   <?PHP if ($CURRENT_VIEW ==ADMIN_VIEW): ?>
-  $("#picavatar").css("top", ((h - 255) / 2) + "px");
-  $("#picavatar").css("left", ((w - 255) / 2) + "px");
-  $("#picavatar").css("display", "inline");
+  $("#fireupload").css("top", ((h - 255) / 2) + "px");
+  $("#fireupload").css("left", ((w - 255) / 2) + "px");
+  $("#fireupload").css("display", "inline");
+  //$("#picavatar").css("top", ((h - 255) / 2) + "px");
+  //$("#picavatar").css("left", ((w - 255) / 2) + "px");
+  $("#picavatar").css("display", "inline");  
  <?PHP else: ?> 
   if (window.innerWidth<800) {
     $("#cudoz").css("display", "none");
@@ -352,4 +359,3 @@ window.addEventListener("resize", function() {
   setTimeout("setFooterPos()", 1000);
 
 }, true);
-  
