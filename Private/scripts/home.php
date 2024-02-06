@@ -84,6 +84,12 @@
  $magicJar2 = (int)substr(strip_tags(filter_input(INPUT_POST, "txtMagicJar2")??""), 0, 1);
  $magicJar3 = (int)substr(strip_tags(filter_input(INPUT_POST, "txtMagicJar3")??""), 0, 1);
 
+ if ($CURRENT_VIEW === PUBLIC_VIEW ) {
+     $MAXP = (int)substr(strip_tags(filter_input(INPUT_GET, "maxp")??""), 0, 2);
+     if ($MAXP === 0) {
+       $MAXP = APP_BLOG_WIDE_MAX_POSTS;
+     }  
+ }
  
  function uploadNewRes() {
 
@@ -367,6 +373,34 @@
 
   <link rel="shortcut icon" href="/favicon.ico" />
 
+<?PHP if ($CURRENT_VIEW == PUBLIC_VIEW): ?> 
+ <script>
+ function renderCorrectPag () {
+      if (window.innerWidth <= 500) {
+         if (<?PHP echo($MAXP) ?>!=<?PHP echo(APP_BLOG_ULTRATHIN_MAX_POSTS) ?>) {
+             window.open("/<?PHP echo(AVATAR_NAME); ?>/?maxp=<?PHP echo(APP_BLOG_ULTRATHIN_MAX_POSTS) ?>","_self");
+          }   
+      } else if (window.innerWidth <= 850) {
+          if (<?PHP echo($MAXP) ?>!=<?PHP echo(APP_BLOG_THIN_MAX_POSTS) ?>) {
+             window.open("/<?PHP echo(AVATAR_NAME); ?>/?maxp=<?PHP echo(APP_BLOG_THIN_MAX_POSTS) ?>","_self");
+          }  
+      } else {
+          if (<?PHP echo($MAXP) ?>!=<?PHP echo(APP_BLOG_WIDE_MAX_POSTS) ?>) {
+             window.open("/<?PHP echo(AVATAR_NAME); ?>/?maxp=<?PHP echo(APP_BLOG_WIDE_MAX_POSTS) ?>","_self");
+          }  
+      }
+ }
+ 
+  window.addEventListener("load", function() {
+     renderCorrectPag();
+  }, false);
+  
+  window.addEventListener("resize", function() {
+     renderCorrectPag();
+  }, false);
+ </script>
+<?PHP endif; ?>
+
   <meta name="description" content="Welcome to Puzzleu! Let everyone have its puzzle."/>
   <meta name="keywords" content="puzzleu,photo,puzzle,on,premise,solution"/>
   <meta name="robots" content="index,follow"/>
@@ -490,23 +524,23 @@
       
       // PAGINATION
 
-      $totPages = (int)(count($aFilePaths)/APP_BLOG_MAX_POSTS); 
-      if ($totPages < (count($aFilePaths)/APP_BLOG_MAX_POSTS)) {
+      $totPages = (int)(count($aFilePaths)/$MAXP); 
+      if ($totPages < (count($aFilePaths)/$MAXP)) {
         $totPages++;
       }
       $firstPost = 0;
-      $prevPost = $blogSP - APP_BLOG_MAX_POSTS;
+      $prevPost = $blogSP - $MAXP;
       if ($prevPost < 0) {
         $prevPost = 0;
       }    
-      $nextPost = $blogSP + APP_BLOG_MAX_POSTS;
-      if ($nextPost > (($totPages - 1) * APP_BLOG_MAX_POSTS)) {
-        $nextPost = (($totPages - 1) * APP_BLOG_MAX_POSTS);
+      $nextPost = $blogSP + $MAXP;
+      if ($nextPost > (($totPages - 1) * $MAXP)) {
+        $nextPost = (($totPages - 1) * $MAXP);
       }
       if ($nextPost < 0) {
         $nextPost = 0;
       }       
-      $lastPost = (($totPages - 1) * APP_BLOG_MAX_POSTS);
+      $lastPost = (($totPages - 1) * $MAXP);
       if ($lastPost < 0) {
         $lastPost = 0;
       }    
@@ -519,7 +553,7 @@
           $iCurEntry++;
           continue;
         }  
-        if ($iEntry>APP_BLOG_MAX_POSTS) {
+        if (($iEntry>$MAXP) || (!APP_PAGINATION && $iCurEntry>APP_BLOG_MAX_POSTS)) {
           break;
         }
         $orifilename = basename($filePath);
@@ -527,7 +561,7 @@
         $date = explode("-",$orifilename)[0];
         $time = explode("-",$orifilename)[1];
         $time = left($time,2) . ":" . substr($time,2,2);
-        if ($iEntry === count($aFilePaths) || $iEntry==APP_BLOG_MAX_POSTS) {
+        if ($iEntry === count($aFilePaths) || $iEntry==$MAXP) {
           $marginbottom = "0px";
         } else {
           $marginbottom = "5px";
@@ -536,16 +570,22 @@
                      <?PHP if (in_array($orifileExt, ["png", "jpg", "jpeg", "gif", "webp"])):?>      
                           <div class="blog-content"> 
                            <div class="blog-entry" onclick="selectVideo(<?php echo($iEntry-1);?>);" style="background:url('/img?av=<?PHP echo(AVATAR_NAME);?>&pic=<?PHP echo($orifilename);?>');background-size:100% 100%;">  
-                                <?PHP if (APP_PAGINATION): ?>
+                                <?PHP if (APP_PAGINATION || (APP_BLOG_MAX_POSTS===0 || APP_BLOG_MAX_POSTS>$iCurEntry)): ?>
                                       <?php if ($iCurEntry===1 && $iEntry===1): ?>
                                        <!--<img class="blog-img" src="/res/arrow-leftd.png" style="float:left;">-->
                                        <?php elseif ($iEntry===1 && $iCurEntry>1): ?>  
-                                       <a href="/<?PHP echo(AVATAR_NAME); ?>/?blogSP=<?PHP echo($prevPost);?>" onclick="event.stopPropagation();"><img class="blog-img" src="/res/arrow-left.png" style="float:left;"></a>
+                                       <a href="/<?PHP echo(AVATAR_NAME); ?>/?blogSP=<?PHP echo($prevPost);?>&maxp=<?PHP echo($MAXP)?>" onclick="event.stopPropagation();"><img class="blog-img" src="/res/arrow-left.png" style="float:left;"></a>
                                        <?php endif; ?>
-                                       <?php if ($iEntry===APP_BLOG_MAX_POSTS && $iCurEntry===$totPost): ?>
+                                       <?php if ($iEntry===$MAXP && $iCurEntry===$totPost): ?>
                                        <!--<img class="blog-img" src="/res/arrow-rightd.png" style="float:right;">-->
-                                       <?php elseif ($iEntry===APP_BLOG_MAX_POSTS): ?>
-                                       <a href="/<?PHP echo(AVATAR_NAME); ?>/?blogSP=<?PHP echo($nextPost);?>" onclick="event.stopPropagation();"><img class="blog-img" src="/res/arrow-right.png" style="float:right;"></a>
+                                       <?php elseif ($iEntry===$MAXP): ?>
+                                          <?PHP if ($MAXP===APP_BLOG_ULTRATHIN_MAX_POSTS): ?> 
+                                            <div style="float:right;position: absolute;left:+65%; opacity:0.85;"><a href="/<?PHP echo(AVATAR_NAME); ?>/?blogSP=<?PHP echo($nextPost);?>&maxp=<?PHP echo($MAXP)?>" onclick="event.stopPropagation();"><img class="blog-img" src="/res/arrow-right.png" style="float:right;"></a></div>
+                                          <?PHP elseif ($MAXP===APP_BLOG_THIN_MAX_POSTS): ?>   
+                                            <div style="float:right;position: absolute;left:+82%; opacity:0.85;"><a href="/<?PHP echo(AVATAR_NAME); ?>/?blogSP=<?PHP echo($nextPost);?>&maxp=<?PHP echo($MAXP)?>" onclick="event.stopPropagation();"><img class="blog-img" src="/res/arrow-right.png" style="float:right;"></a></div>                                          
+                                          <?PHP else: ?>                                            
+                                            <div style="float:right;position: absolute;left:+92%; opacity:0.85;"><a href="/<?PHP echo(AVATAR_NAME); ?>/?blogSP=<?PHP echo($nextPost);?>&maxp=<?PHP echo($MAXP)?>" onclick="event.stopPropagation();"><img class="blog-img" src="/res/arrow-right.png" style="float:right;"></a></div>
+                                          <?php endif; ?>  
                                        <?php endif; ?>
                                  <?PHP else: ?>
                                        &nbsp;
@@ -562,7 +602,7 @@
    
       <?PHP endif; ?>
 
-    <?PHP for($i=$iEntry;$i<=APP_BLOG_MAX_POSTS;$i++):?>
+    <?PHP for($i=$iEntry;$i<=$MAXP;$i++):?>
             <div class="blog-content"> 
              <div class="blog-entry" style="border:0px;background:darkgray;">  
                  &nbsp;
@@ -570,14 +610,14 @@
             </div>   
    <?PHP endfor; ?>
    
-   <?PHP if ((APP_BLOG_MAX_POSTS / 3) > (int)(APP_BLOG_MAX_POSTS / 3)): ?>
+   <?PHP if (($MAXP / 3) > (int)($MAXP / 3)): ?>
             <div class="blog-content"> 
              <div class="blog-entry" style="border:0px;background:darkgray;">  
                  &nbsp;
              </div> 
             </div>   
    
-           <?PHP if (((APP_BLOG_MAX_POSTS+1) / 3) > (int)((APP_BLOG_MAX_POSTS+1) / 3)): ?>
+           <?PHP if ((($MAXP+1) / 3) > (int)(($MAXP+1) / 3)): ?>
                  <div class="blog-content"> 
                   <div class="blog-entry" style="border:0px;background:darkgray;">  
                       &nbsp;
@@ -1005,8 +1045,8 @@
     w = window.innerWidth;
     pich = parseInt((h - $(".header").height() - 80) / 3);
     // picw = parseInt(w / 5); ori
-    iimg = parseInt(<?PHP echo(APP_BLOG_MAX_POSTS / 3); ?>);
-    if ((<?PHP echo(APP_BLOG_MAX_POSTS / 3); ?>) > parseInt(<?PHP echo(APP_BLOG_MAX_POSTS / 3); ?>)) {
+    iimg = parseInt(<?PHP echo($MAXP / 3); ?>);
+    if ((<?PHP echo($MAXP / 3); ?>) > parseInt(<?PHP echo($MAXP / 3); ?>)) {
       iimg++;
     }  
     picw = parseInt(w / iimg);
