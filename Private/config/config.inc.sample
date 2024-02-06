@@ -75,8 +75,11 @@ LICENSETEXT
 define('APP_DEF_LANG', "en-US");
 define('APP_DEF_PROFILE_PIC', "/res/pic1.png");
 define('APP_FILE_MAX_SIZE', 10496000);
-define('APP_BLOG_MAX_POSTS', 15);
-define('APP_PAGINATION', false);
+define('APP_PAGINATION', true);
+define('APP_BLOG_MAX_POSTS', 0);
+define('APP_BLOG_WIDE_MAX_POSTS', 15);
+define('APP_BLOG_THIN_MAX_POSTS', 6);
+define('APP_BLOG_ULTRATHIN_MAX_POSTS', 3);
 define('APP_EMAIL_CONTACT', "info@yourpuzzleu.com");
 
 $CONFIG = [
@@ -125,8 +128,11 @@ LICENSETEXT
       'DEF_LANG' => "en-US",
       'DEF_PROFILE_PIC' => "/res/pic1.png", 
       'FILE_MAX_SIZE' => 10496000,
-      'BLOG_MAX_POSTS' => 15,
-      'PAGINATION' => false,
+      'PAGINATION' => true,
+      'BLOG_MAX_POSTS ' => 0,
+      'BLOG_WIDE_MAX_POSTS' => 15,      
+      'BLOG_THIN_MAX_POSTS' => 6,
+      'BLOG_ULTRATHIN_MAX_POSTS' => 3, 
       'EMAIL_CONTACT' => "info@yourpuzzleu.com"
       ]
     
