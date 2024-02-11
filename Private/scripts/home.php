@@ -380,7 +380,7 @@
          if (<?PHP echo($MAXP) ?>!=<?PHP echo(APP_BLOG_ULTRATHIN_MAX_POSTS) ?>) {
              window.open("/<?PHP echo(AVATAR_NAME); ?>/?maxp=<?PHP echo(APP_BLOG_ULTRATHIN_MAX_POSTS) ?>","_self");
           }   
-      } else if (window.innerWidth <= 850) {
+      } else if (window.innerWidth <= 1050) {
           if (<?PHP echo($MAXP) ?>!=<?PHP echo(APP_BLOG_THIN_MAX_POSTS) ?>) {
              window.open("/<?PHP echo(AVATAR_NAME); ?>/?maxp=<?PHP echo(APP_BLOG_THIN_MAX_POSTS) ?>","_self");
           }  
