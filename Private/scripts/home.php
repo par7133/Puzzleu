@@ -482,6 +482,11 @@
 <?PHP else: ?>          
 
   <body style="background:#dadada no-repeat; background-size: cover; background-attachment: fixed; background-position: center;">
+
+<?php if (file_exists(APP_PATH . DIRECTORY_SEPARATOR . "jscheck.html")): ?>
+<?php include(APP_PATH . DIRECTORY_SEPARATOR . "jscheck.html"); ?> 
+<?php endif; ?>
+      
    <!--<div id="AFHint">
         <button type="button" class="close" aria-label="Close" onclick="closeMe(this);" style="position:relative; top:5px; left:-7px;">
            <span aria-hidden="true" style="color:black; font-weight:900;">&times;</span>
