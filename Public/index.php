@@ -44,6 +44,11 @@ switch ($url) {
     define("SCRIPT_NAME", "action");
     define("SCRIPT_FILENAME", "action.php");     
     break;
+  case "err-404":
+    $scriptPath = APP_ERROR_PATH;
+    define("SCRIPT_NAME", "err-404");
+    define("SCRIPT_FILENAME", "err-404.php");     
+    break;
   case "":
   case "home":
   
