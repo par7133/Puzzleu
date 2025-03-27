@@ -36,4 +36,4 @@ You can access your avatar by http://yourdomain.com/<your_avatar>. Login with th
 
 ![Puzzleu in action #2](/Public/res/screenshot2.png)<br>
 
-Feedback: <a href="mailto:posta@elettronica.lol" style="color:#e6d236;">posta@elettronica.lol</a>
+Feedback: <a href="mailto:code@gaox.io" style="color:#e6d236;">code@gaox.io</a>
