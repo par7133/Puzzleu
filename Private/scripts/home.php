@@ -26,6 +26,8 @@
  * @copyrights (c) 2016, 2024, 5 Mode
  */
 
+// use QRcode;
+
  // CONSTANTS AND VARIABLE DECLARATION      
  $CURRENT_VIEW = PUBLIC_VIEW;
  
@@ -378,15 +380,15 @@
  function renderCorrectPag () {
       if (window.innerWidth <= 500) {
          if (<?PHP echo($MAXP) ?>!=<?PHP echo(APP_BLOG_ULTRATHIN_MAX_POSTS) ?>) {
-             window.open("/<?PHP echo(AVATAR_NAME); ?>/?maxp=<?PHP echo(APP_BLOG_ULTRATHIN_MAX_POSTS) ?>","_self");
+             window.open("/<?PHP echo(AVATAR_NAME); ?>/?blogSP=<?php echo($blogSP); ?>&maxp=<?PHP echo(APP_BLOG_ULTRATHIN_MAX_POSTS) ?>","_self");
           }   
       } else if (window.innerWidth <= 1050) {
           if (<?PHP echo($MAXP) ?>!=<?PHP echo(APP_BLOG_THIN_MAX_POSTS) ?>) {
-             window.open("/<?PHP echo(AVATAR_NAME); ?>/?maxp=<?PHP echo(APP_BLOG_THIN_MAX_POSTS) ?>","_self");
+             window.open("/<?PHP echo(AVATAR_NAME); ?>/?blogSP=<?php echo($blogSP); ?>&maxp=<?PHP echo(APP_BLOG_THIN_MAX_POSTS) ?>","_self");
           }  
       } else {
           if (<?PHP echo($MAXP) ?>!=<?PHP echo(APP_BLOG_WIDE_MAX_POSTS) ?>) {
-             window.open("/<?PHP echo(AVATAR_NAME); ?>/?maxp=<?PHP echo(APP_BLOG_WIDE_MAX_POSTS) ?>","_self");
+             window.open("/<?PHP echo(AVATAR_NAME); ?>/?blogSP=<?php echo($blogSP); ?>&maxp=<?PHP echo(APP_BLOG_WIDE_MAX_POSTS) ?>","_self");
           }  
       }
  }
@@ -477,7 +479,7 @@
  </form>   
            
   <div id="footerCont">&nbsp;</div>
-  <div id="footer"><span style="background:#FFFFFF; opacity:0.7;">&nbsp;&nbsp;<a class="aaa" href="https://5mode.com/dd.html">Disclaimer</a>.&nbsp;&nbsp;A <a href="http://5mode.com" class="aaa">5 Mode</a> project and <a href="http://demo.5mode.com" class="aaa">WYSIWYG</a> system. <?PHP echo(getResource0("Some rights reserved", $lang));?></span></div>
+  <div id="footer"><span style="background:#FFFFFF; opacity:0.7;">&nbsp;&nbsp;<a class="aaa" href="dd.html">Disclaimer</a>.&nbsp;&nbsp;A <a href="http://5mode.com" class="aaa">5 Mode</a> project and <a href="http://demo.5mode.com" class="aaa">WYSIWYG</a> system. <?PHP echo(getResource0("Some rights reserved", $lang));?></span></div>
            
 <?PHP else: ?>          
 
@@ -500,7 +502,7 @@
    
    <div id="header" class="header" style="margin-top:18px;margin-bottom:18px;">
         <div style="float:left">
-             <a href="http://puzzleu.5mode-foss.eu" target="_self" style="color:#000000; text-decoration: none;">&nbsp;<img src="/res/AFlogo.png" align="middle" style="position:relative;top:-5px;width:22px;">&nbsp;Puzzleu</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/par7133/Puzzleu" style="color:#000000;"><span style="color:#119fe2">on</span> github</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="mailto:code@gaox.io" style="color:#000000;"><span style="color:#119fe2">for</span> feedback</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="tel:+39-378-0812391" style="font-size:13px;background-color:#15c60b;border:2px solid #15c60b;color:#000000;height:27px;text-decoration:none;">&nbsp;&nbsp;get support&nbsp;&nbsp;</a>
+             <a href="http://puzzleu.5mode-foss.eu" target="_self" style="color:#000000; text-decoration: none;">&nbsp;<img src="/res/AFlogo.png" align="middle" style="position:relative;top:-5px;width:22px;">&nbsp;Puzzleu</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/par7133/Puzzleu" style="color:#000000;"><span style="color:#119fe2">on</span> github</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="mailto:posta@elettronica.lol" style="color:#000000;"><span style="color:#119fe2">for</span> feedback</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="tel:+39-331-4029415" style="font-size:13px;background-color:#15c60b;border:2px solid #15c60b;color:#000000;height:27px;text-decoration:none;">&nbsp;&nbsp;get support&nbsp;&nbsp;</a>
         </div>
         <div style="float:right; position:relative; top:-10px;margin-right:300px;">
               <a href="#" onclick="slideShow();"><img src="/res/playicon.png" style="width:45px;"></a>
@@ -595,7 +597,7 @@
                                        <!--<img class="blog-img" src="/res/arrow-rightd.png" style="float:right;">-->
                                        <?php elseif ($iEntry===$MAXP): ?>
                                           <?PHP if ($MAXP===APP_BLOG_ULTRATHIN_MAX_POSTS): ?> 
-                                            <div style="float:right;position: absolute;left:+65%; opacity:0.85;"><a href="/<?PHP echo(AVATAR_NAME); ?>/?blogSP=<?PHP echo($nextPost);?>&maxp=<?PHP echo($MAXP)?>" onclick="event.stopPropagation();"><img class="blog-img" src="/res/arrow-right.png" style="float:right;"></a></div>
+                                            <div style="float:right;position: absolute;left:+85%; opacity:0.85;"><a href="/<?PHP echo(AVATAR_NAME); ?>/?blogSP=<?PHP echo($nextPost);?>&maxp=<?PHP echo($MAXP)?>" onclick="event.stopPropagation();"><img class="blog-img" src="/res/arrow-right.png" style="float:right;"></a></div>
                                           <?PHP elseif ($MAXP===APP_BLOG_THIN_MAX_POSTS): ?>   
                                             <div style="float:right;position: absolute;left:+82%; opacity:0.85;"><a href="/<?PHP echo(AVATAR_NAME); ?>/?blogSP=<?PHP echo($nextPost);?>&maxp=<?PHP echo($MAXP)?>" onclick="event.stopPropagation();"><img class="blog-img" src="/res/arrow-right.png" style="float:right;"></a></div>                                          
                                           <?PHP else: ?>                                            
@@ -651,7 +653,7 @@
 
                     <button id="modalButton<?php echo($iLink);?>" type="button" class="btn btn-primary" style="display:none;" data-toggle="modal" data-target="#modal<?php echo($iLink);?>">Button #<?php echo($iLink);?></button>
 
-                    <div class="modal" tabindex="-1" role="dialog" id="modal<?php echo($iLink);?>" style="z-index:99997">
+                    <div class="modal" tabindex="-1" role="dialog" id="modal<?php echo($iLink);?>" style="z-index:99997;margin-top:10px;">
                       <div class="modal-dialog modal-lg" role="document" style="width:95%;margin-top:0;background-color:#FFFFFF;z-index:99998">
                         <div class="modal-content" style="float:left;width: content-box;max-width:60%;z-index:99999;">
  
@@ -975,7 +977,6 @@
 <?PHP if ($CURRENT_VIEW == PUBLIC_VIEW): ?> 
 <script>
   function selectVideo(i) {
-    //alert(3);
     y=0;
     $(".image").each(function(){
       if (y==i) {
@@ -985,14 +986,18 @@
           $(this).css("height", "");
         }
         $(this).attr("src", $(this).attr("marti-src"));
+        if (window.innerWidth <= 900) {
+          $(this).css("margin-top", "0px");
+          $(this).css("width", (parseInt(window.innerWidth)/100*75)+"px");
+          $(this).css("height", (parseInt(window.innerHeight)/100*60)+"px");
+        } else {
+          $(this).css("width", (parseInt(window.innerWidth)/100*60)+"px");
+        }
       } else {
         $(this).attr("src", "");
       }
       y++;
     });
-    //alert(i);
-    //alert($('#iframe' + i).attr("id"));
-    //$("#iframe"+i).attr("src", $("#iframe"+i).attr("marti-src") );
     $("#modalButton" + i).click();
   }
 </script>  
@@ -1069,8 +1074,13 @@
     $(".blog-content").css("width", picw + "px");
     $(".blog-entry").css("height", (pich-2) + "px");
     $(".blog-entry").css("width", (picw-2) + "px");
-    $(".blog-img").css("height", (pich-4) + "px");   
-    $(".blog-img").css("width", ((picw-4)/3) + "px");   
+    if (window.innerWidth < 650) {
+      $(".blog-img").css("height", ((pich-4)-80) + "px");   
+      $(".blog-img").css("width", (((picw-4)/3)-80) + "px");   
+    } else {
+      $(".blog-img").css("height", (pich-4) + "px");   
+      $(".blog-img").css("width", ((picw-4)/3) + "px"); 
+    }
     // ---
     
     $("#passworddisplay").css("top", parseInt(h-$("#passworddisplay").height()-100)+"px");
@@ -1108,6 +1118,15 @@
    ii = setInterval(showSlide,3700);
   }    
 </script>  
+
+<!-- DEPICT -->
+<?php if (is_readable($AVATAR_PATH . DIRECTORY_SEPARATOR . "depict.html")): ?>
+<?php include($AVATAR_PATH . DIRECTORY_SEPARATOR . "depict.html"); ?> 
+<?php else: ?>
+      <?php if (file_exists(APP_PATH . DIRECTORY_SEPARATOR . "depict.html")): ?>
+      <?php include(APP_PATH . DIRECTORY_SEPARATOR . "depict.html"); ?> 
+      <?php endif; ?>
+<?php endif; ?>
 
 <!-- SKINNER CODE -->
 <?php if (is_readable($AVATAR_PATH . DIRECTORY_SEPARATOR . "skinner.html")): ?>
