@@ -502,7 +502,7 @@
    
    <div id="header" class="header" style="margin-top:18px;margin-bottom:18px;">
         <div style="float:left">
-             <a href="http://puzzleu.5mode-foss.eu" target="_self" style="color:#000000; text-decoration: none;">&nbsp;<img src="/res/AFlogo.png" align="middle" style="position:relative;top:-5px;width:22px;">&nbsp;Puzzleu</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/par7133/Puzzleu" style="color:#000000;"><span style="color:#119fe2">on</span> github</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="mailto:posta@elettronica.lol" style="color:#000000;"><span style="color:#119fe2">for</span> feedback</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="tel:+39-331-4029415" style="font-size:13px;background-color:#15c60b;border:2px solid #15c60b;color:#000000;height:27px;text-decoration:none;">&nbsp;&nbsp;get support&nbsp;&nbsp;</a>
+             <a href="http://puzzleu.numode-foss.eu" target="_self" style="color:#000000; text-decoration: none;">&nbsp;<img src="/res/AFlogo.png" align="middle" style="position:relative;top:-5px;width:22px;">&nbsp;Puzzleu</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/par7133/Puzzleu" style="color:#000000;"><span style="color:#119fe2">on</span> github</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="mailto:posta@elettronica.lol" style="color:#000000;"><span style="color:#119fe2">for</span> feedback</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="tel:+39-331-4029415" style="font-size:13px;background-color:#15c60b;border:2px solid #15c60b;color:#000000;height:27px;text-decoration:none;">&nbsp;&nbsp;get support&nbsp;&nbsp;</a>
         </div>
         <div style="float:right; position:relative; top:-10px;margin-right:300px;">
               <a href="#" onclick="slideShow();"><img src="/res/playicon.png" style="width:45px;"></a>
@@ -510,7 +510,7 @@
    </div>
    <div id="headerMob" class="header" style="margin-top:18px;margin-bottom:18px;display:none">
         <div style="float:left">
-             <a href="http://puzzleu.5mode-foss.eu" target="_self" style="color:#000000; text-decoration: none;">&nbsp;<img src="/res/AFlogo.png" align="middle" style="position:relative;top:-5px;width:22px;">&nbsp;Puzzleu</a>
+             <a href="http://puzzleu.numode-foss.eu" target="_self" style="color:#000000; text-decoration: none;">&nbsp;<img src="/res/AFlogo.png" align="middle" style="position:relative;top:-5px;width:22px;">&nbsp;Puzzleu</a>
         </div>   
    </div>
    
@@ -967,7 +967,7 @@
         </select> 
     </div>
     <div id="footer2" style="float:right; width:450px;">
-        <span style="background:#FFFFFF; opacity:0.7;">&nbsp;&nbsp;A <a href="http://5mode.com" class="aaa">5 Mode</a> project and <a href="http://demo.5mode.com" class="aaa">WYSIWYG</a> system. <?PHP echo(getResource0("Some rights reserved", $lang));?>.</span>
+        <span style="background:#FFFFFF; opacity:0.7;">&nbsp;&nbsp;A <a href="http://numode.eu" class="aaa">NuMode</a> project and <a href="http://demo.numode.eu" class="aaa">WYSIWYG</a> system. <?PHP echo(getResource0("Some rights reserved", $lang));?>.</span>
     </div>
            
  <?PHP endif; ?>           
