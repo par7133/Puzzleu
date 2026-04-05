@@ -35,6 +35,7 @@ define('APP_TITLE', "Puzzleu: everyone its puzzle.");
 
 // password: your_password
 //define('APP_BLOG_HASH', "");
+//define('APP_BLOG_EMAIL_CONTACT', "");
 
 // password: your_password
 // salt: your_salt
